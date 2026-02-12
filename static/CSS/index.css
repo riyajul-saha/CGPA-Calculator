@@ -296,3 +296,15 @@ hr {
 .cgpa-card:hover {
     box-shadow: 0 25px 40px -12px rgba(37, 99, 235, 0.14);
 }
+
+/* Success Message Style */
+.success-msg {
+    margin-top: 1rem;
+    font-weight: 600;
+    color: #10b981;
+    /* Green-500 */
+    text-align: center;
+    min-height: 1.5rem;
+    /* Reserve space */
+    transition: opacity 0.3s ease;
+}

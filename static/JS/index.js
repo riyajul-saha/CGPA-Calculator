@@ -101,6 +101,10 @@
 
     // Send to backend
     try {
+      // Clear previous messages
+      const successDiv = document.getElementById('successMessage');
+      if (successDiv) successDiv.innerText = '';
+
       const response = await fetch('/calculate_cgpa', {
         method: 'POST',
         headers: {
@@ -122,9 +126,19 @@
 
       if (response.ok) {
         cgpaDisplay.innerText = data.cgpa;
+        // Show success message if present
+        if (data.message && successDiv) {
+          successDiv.innerText = data.message;
+          // Optional: clear after 5 seconds
+          setTimeout(() => { successDiv.innerText = ''; }, 5000);
+        }
       } else {
         console.error('Error:', data.error);
         cgpaDisplay.innerText = 'Err';
+        if (successDiv) {
+             successDiv.style.color = 'red';
+             successDiv.innerText = 'Error saving data';
+        }
       }
     } catch (error) {
       console.error('Fetch error:', error);

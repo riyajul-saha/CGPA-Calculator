@@ -20,6 +20,8 @@ def init_db():
             roll TEXT,
             number TEXT,
             semester INTEGER,
+            sgpa1 REAL,
+            sgpa2 REAL,
             cgpa REAL,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
@@ -57,12 +59,14 @@ def calculate_cgpa():
             conn = get_db_connection()
             
             # Insert data
-            query = "INSERT INTO students (name, roll, number, semester, cgpa) VALUES (?, ?, ?, ?, ?)"
+            query = "INSERT INTO students (name, roll, number, semester, sgpa1, sgpa2, cgpa) VALUES (?, ?, ?, ?, ?, ?, ?)"
             values = (
                 data.get('name', ''),
                 data.get('roll', ''),
                 data.get('number', ''),
                 data.get('semester', 0),
+                sgpa1,
+                sgpa2,
                 cgpa_val
             )
             conn.execute(query, values)
@@ -74,9 +78,12 @@ def calculate_cgpa():
             print(f"Database Error: {err}")
             # Continue to return CGPA even if DB save fails
             
-        return jsonify({"cgpa": f"{cgpa_val:.2f}"})
+        return jsonify({
+            "cgpa": f"{cgpa_val:.2f}",
+            "message": "Data saved successfully! ✅"
+        })
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(debug=True)
