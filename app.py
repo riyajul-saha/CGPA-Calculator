@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 import sqlite3
+from datetime import datetime, timedelta, timezone
 
 app = Flask(__name__)
 
@@ -58,8 +59,14 @@ def calculate_cgpa():
         try:
             conn = get_db_connection()
             
+            # Calculate IST Time
+            ist_offset = timedelta(hours=5, minutes=30)
+            ist_tz = timezone(ist_offset)
+            now_ist = datetime.now(ist_tz)
+            formatted_time = now_ist.strftime('%Y-%m-%d %H:%M:%S')
+
             # Insert data
-            query = "INSERT INTO students (name, roll, number, semester, sgpa1, sgpa2, cgpa) VALUES (?, ?, ?, ?, ?, ?, ?)"
+            query = "INSERT INTO students (name, roll, number, semester, sgpa1, sgpa2, cgpa, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
             values = (
                 data.get('name', ''),
                 data.get('roll', ''),
@@ -67,7 +74,8 @@ def calculate_cgpa():
                 data.get('semester', 0),
                 sgpa1,
                 sgpa2,
-                cgpa_val
+                cgpa_val,
+                formatted_time
             )
             conn.execute(query, values)
             conn.commit()
