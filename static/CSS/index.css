@@ -1,0 +1,298 @@
+/* GLOBAL STYLES – Best color combo */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    background-color: #f3f4f6;
+    /* Light gray background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 1.5rem;
+    margin: 0;
+}
+
+/* MAIN CONTAINER – rounded, soft shadow, fade-in animation */
+.cgpa-card {
+    background-color: white;
+    width: 100%;
+    max-width: 440px;
+    /* between 400–450px */
+    margin: 0 auto;
+    padding: 30px 28px;
+    border-radius: 28px;
+    /* rounded corners */
+    box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.06), 0 10px 15px -6px rgba(0, 0, 0, 0.02);
+    animation: fadeSlide 0.6s cubic-bezier(0.16, 1, 0.2, 1);
+    transition: box-shadow 0.2s;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* subtle fade-in animation */
+@keyframes fadeSlide {
+    0% {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* HEADER with icon 🎓 */
+.title-section {
+    margin-bottom: 24px;
+    text-align: left;
+}
+
+.main-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: #1f2937;
+    /* dark gray */
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+}
+
+.main-heading i {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.subhead {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #4b5563;
+    border-left: 4px solid #2563eb;
+    /* soft blue accent */
+    padding-left: 12px;
+    margin-top: 2px;
+    margin-bottom: 6px;
+    line-height: 1.4;
+}
+
+/* FORM – input group styling */
+.form-group {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+label span {
+    color: #2563eb;
+    font-weight: 700;
+    margin-left: 4px;
+}
+
+/* FULL WIDTH input, select – with light border, rounded */
+input,
+select {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 1rem;
+    background: white;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 16px;
+    /* rounded corners */
+    outline: none;
+    transition: all 0.2s ease;
+    color: #1f2937;
+    appearance: none;
+    -webkit-appearance: none;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+/* soft blue glow on focus */
+input:focus,
+select:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+    background-color: white;
+}
+
+/* remove spinners for number inputs – clean look */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+/* semester select custom arrow */
+select {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%232563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 18px;
+    padding-right: 48px;
+}
+
+/* error message style – red, shown only when invalid */
+.error-msg {
+    color: #b91c1c;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-top: 6px;
+    margin-left: 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    letter-spacing: 0.3px;
+    min-height: 20px;
+    transition: 0.1s;
+}
+
+.error-msg::before {
+    content: "⚠️";
+    font-size: 0.7rem;
+}
+
+/* BUTTON design – primary blue, rounded, hover effect */
+.calculate-btn {
+    background: #2563eb;
+    /* soft blue */
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 16px 28px;
+    width: 100%;
+    border: none;
+    border-radius: 40px;
+    /* fully rounded */
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.1s, box-shadow 0.2s;
+    margin-top: 12px;
+    margin-bottom: 20px;
+    letter-spacing: 0.8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.25);
+}
+
+.calculate-btn:hover {
+    background: #1d4ed8;
+    /* slightly darker blue */
+    box-shadow: 0 10px 22px rgba(29, 78, 216, 0.3);
+    transform: scale(1.01);
+}
+
+.calculate-btn:active {
+    transform: scale(0.98);
+}
+
+/* result display – CGPA output */
+.cgpa-result {
+    background: #f1f5f9;
+    border-radius: 20px;
+    padding: 16px 20px;
+    margin-top: 8px;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #1e293b;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cgpa-label {
+    font-weight: 500;
+    color: #2563eb;
+    background: rgba(37, 99, 235, 0.08);
+    padding: 6px 16px;
+    border-radius: 40px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.cgpa-value {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1;
+}
+
+/* small adjustments for mobile */
+@media (max-width: 480px) {
+    body {
+        padding: 0.75rem;
+    }
+
+    .cgpa-card {
+        padding: 24px 20px;
+    }
+
+    .main-heading {
+        font-size: 1.7rem;
+    }
+}
+
+/* roll default subtle note */
+.roll-hint {
+    font-size: 0.7rem;
+    color: #6b7280;
+    margin-top: 4px;
+    margin-left: 8px;
+}
+
+/* extra spacing */
+hr {
+    margin: 16px 0 8px;
+    border: 0.5px solid #f1f5f9;
+}
+
+/* icon inline with button */
+.btn-icon {
+    font-size: 1.2rem;
+}
+
+/* disable default number spinners consistently */
+
+/* ensure error msg appears in red – only shown when not empty */
+.error-msg:empty {
+    display: none;
+}
+
+.error-msg:not(:empty) {
+    display: flex;
+    background: rgba(185, 28, 28, 0.04);
+    padding: 6px 10px;
+    border-radius: 30px;
+    color: #b91c1c;
+}
+
+/* default roll read only feel? not necessary but clean */
+#roll {
+    background-color: #fafafa;
+}
+
+/* subtle hover on container */
+.cgpa-card:hover {
+    box-shadow: 0 25px 40px -12px rgba(37, 99, 235, 0.14);
+}

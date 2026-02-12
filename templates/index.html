@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>CGPA calculator · Yogoda Satsanga Palpara Mahavidyalaya</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='CSS/index.css') }}">
+</head>
+
+<body>
+  <div class="cgpa-card">
+    <!-- 🎓 icon side of main title -->
+    <div class="title-section">
+      <div class="main-heading">
+        <span>🎓</span> CGPA Calculator
+      </div>
+      <div class="subhead">
+        Yogoda Satsanga Palpara Mahavidyalaya
+      </div>
+    </div>
+
+    <!-- FORM area -->
+    <form id="cgpaForm" onsubmit="event.preventDefault(); return false;">
+      <!-- 1. Name -->
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" id="studentName" placeholder="e.g. Riyajul Saha" autocomplete="off">
+      </div>
+
+      <!-- 2. Roll – default 4122157 -->
+      <div class="form-group">
+        <label>Roll</label>
+        <input type="text" id="roll" value="4122157" placeholder="Last Exam's Roll">
+        <div class="roll-hint">default: 4122157</div>
+      </div>
+
+      <!-- 3. Number (e.g. mobile / registration) -->
+      <div class="form-group">
+        <label>Number </label>
+        <input type="number" id="studentNumber" placeholder="Last Exam's Number[24396..]">
+      </div>
+
+      <!-- 4. Semester – select with default 3rd sem -->
+      <div class="form-group">
+        <label>Current Semester</label>
+        <select id="semesterSelect">
+          <option value="3" selected>3rd Semester</option>
+          <option value="5">5th Semester</option>
+          <option value="7">7th Semester</option>
+        </select>
+      </div>
+
+      <!-- 5. SGPA Semester-1 (float) -->
+      <div class="form-group">
+        <label id="sgpa1Label">SGPA (Semester-1)</label>
+        <input type="number" id="sgpa1" step="0.01" min="0" max="10" placeholder="0.00 – 10.00" inputmode="decimal">
+        <div id="sgpa1Error" class="error-msg"></div>
+      </div>
+
+      <!-- 6. SGPA Semester-2 (float) -->
+      <div class="form-group">
+        <label id="sgpa2Label">SGPA (Semester-2)</label>
+        <input type="number" id="sgpa2" step="0.01" min="0" max="10" placeholder="0.00 – 10.00" inputmode="decimal">
+        <div id="sgpa2Error" class="error-msg"></div>
+      </div>
+
+      <!-- 7. Credit Semester-1 (integer) -->
+      <div class="form-group">
+        <label id="credit1Label">Credit (Semester-1)</label>
+        <input type="number" id="credit1" min="1" max="30" placeholder="e.g. 20" inputmode="numeric">
+      </div>
+
+      <!-- 8. Credit Semester-2 (integer) -->
+      <div class="form-group">
+        <label id="credit2Label">Credit (Semester-2)</label>
+        <input type="number" id="credit2" min="1" max="30" placeholder="e.g. 24" inputmode="numeric">
+      </div>
+
+      <!-- CALCULATE & SAVE BUTTON (inside form, as requested) -->
+      <button type="button" id="calculateSaveBtn" class="calculate-btn">
+        <span class="btn-icon">⚡</span> Calculate and Save
+        <span style="font-size:1rem;">💾</span>
+      </button>
+
+      <!-- CGPA result area – dynamic -->
+      <div class="cgpa-result">
+        <span class="cgpa-label">📊 YOUR CGPA</span>
+        <span class="cgpa-value" id="cgpaDisplay">0.00</span>
+      </div>
+    </form>
+  </div>
+
+  <!-- subtle validation + calculation logic -->
+  <script src="{{ url_for('static', filename='JS/index.js') }}"></script>
+</body>
+
+</html>
