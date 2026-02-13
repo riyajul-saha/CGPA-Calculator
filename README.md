@@ -18,36 +18,36 @@ The CGPA Calculator is a tool designed to calculate the Cumulative Grade Point A
    ```sh
    cd CGPA-Calculator
    ```
-3. Install the required dependencies:
+3. Install the required dependencies[Before run please confirm that Python already installed in your device]:
    ```sh
-   npm install
+   pip install -r requirements.txt
    ```
 
 ## Project Structure
 ```
 CGPA-Calculator/
 │
-├── src/               # Source files for the application
-├── tests/             # Test files
-├── README.md          # Project documentation
-└── package.json       # Dependencies and scripts
+├── static/               # Additional File CSS and JS
+├── templates/            # HTML pages
+├── README.md             # Project documentation
+└── app.py                # Main file and Backend
 ```  
 
 ## Testing
 Run the following command to execute the tests:
 ```sh
-npm test
+flask --version
 ```
 
 ## Usage
 To start the application, use the following command:
 ```sh
-npm start
+python app.py
 ```
 
 ## Requirements
-- Node.js (version 14 or above)
-- npm (version 6 or above)
+- Python (version 3 or above)
+- flask (version 3 or above)
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for more details.
