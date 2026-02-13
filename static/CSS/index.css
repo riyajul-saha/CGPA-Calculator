@@ -205,6 +205,21 @@ select {
     transform: scale(0.98);
 }
 
+/* Disabled state */
+.calculate-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: #9ca3af;
+    transform: none;
+    box-shadow: none;
+}
+
+.calculate-btn:disabled:hover {
+    background: #9ca3af;
+    transform: none;
+    box-shadow: none;
+}
+
 /* result display – CGPA output */
 .cgpa-result {
     background: #f1f5f9;
